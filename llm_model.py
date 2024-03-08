@@ -62,8 +62,7 @@ def generate_response(prompt):
 def setup_bring_your_own_data(deployment_id: str) -> None:
     class BringYourOwnDataAdapter(requests.adapters.HTTPAdapter):
         def send(self, request, **kwargs):
-            request.url = f"{openai.api_base}/openai/deployments/{
-                deployment_id}/extensions/chat/completions?api-version={openai.api_version}"
+            request.url = f"{openai.api_base}/openai/deployments/{deployment_id}/extensions/chat/completions?api-version={openai.api_version}"
             return super().send(request, **kwargs)
 
     session = requests.Session()
